@@ -18,6 +18,7 @@ const TodoTemplateBlock = styled.div`
     flex-direction: column;
 `;
 
+// 전체 TodoTemplate이 될 컴포넌트
 const TodoTemplate = ({ children }) => {
     return (
         <TodoTemplateBlock>{ children }</TodoTemplateBlock>

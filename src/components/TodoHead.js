@@ -25,6 +25,7 @@ const TodoHeadBlock = styled.div`
   }
 `;
 
+// 오늘의 날짜, 요일, 남은 할 일의 갯수를 보여주는 TodoHead 컴포넌트
 function TodoHead() {
     return (
       <TodoHeadBlock>
