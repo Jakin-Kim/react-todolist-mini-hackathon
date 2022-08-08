@@ -25,7 +25,6 @@ const TodoItemBlock = styled.div`
   padding-top: 12px;
   padding-bottom: 12px;
   &:hover {
-  // Component
     ${Remove} {
       display: initial;
     }
