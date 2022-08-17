@@ -1,0 +1,25 @@
+export const initialTodos = 
+{
+    "items": [
+        {
+            "id": 1,
+            "text": "오늘 프로젝트 만들기",
+            "done": true,
+        },
+        {
+            "id": 2,
+            "text": "컴포넌트 스타일링 공부하기",
+            "done": true,
+        },
+        {
+            "id": 3,
+            "text": "온라인 세션 준비하기",
+            "done": false,
+        },
+        {
+            "id": 4,
+            "text": "공부한 내용 커밋하기",
+            "done": false,
+        }
+    ]
+}

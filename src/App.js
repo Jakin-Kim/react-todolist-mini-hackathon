@@ -15,6 +15,15 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App() {
+
+  // 함수 undoneTasks => <TodoHead>
+
+  // 함수 todos => <TodoList/> -> <TodoItem/>
+  // 함수 onRemove => <TodoList/> -> <TodoItem/>
+  // 함수 onToggle => <TodoList/> -> <TodoItem/>
+
+  // 함수 onCreate => <TodoCreate/>
+
   return (
     <>
       <GlobalStyle/>
