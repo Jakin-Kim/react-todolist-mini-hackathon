@@ -1,12 +1,10 @@
+// 오늘의 날짜와 요일을 보여주고 앞으로 해야할 일이 몇개 남았는지 보여주는 컴포넌트
 import React from 'react';
 import styled from 'styled-components';
 
 const TodoHeadBlock = styled.div`
-  padding-top: 48px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #e9ecef;
+  padding: 48px 32px 24px 32px; // 요소가 4개라면, top | right | bottom | left (시계방향으로 회전한다고 생각하면 쉽겠다!)
+  border-bottom: 1px solid #e9ecef; // 요소가 3개라면, 두께 | 종류 | 색상
   h1 {
     margin: 0;
     font-size: 36px;
@@ -29,8 +27,8 @@ const TodoHeadBlock = styled.div`
 function TodoHead() {
     return (
       <TodoHeadBlock>
-        <h1>2022년 7월 19일</h1>
-        <div className="day">화요일</div>
+        <h1>2022년 8월 17일</h1>
+        <div className="day">수요일</div>
         <div className="tasks-left">할 일 3개 남음</div>
       </TodoHeadBlock>
     );

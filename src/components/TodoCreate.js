@@ -1,7 +1,9 @@
+// 새로운 할 일을 등록할 수 있게 해주는 컴포넌트
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 
+// 원형 토글(클릭 시, input값 생성 및 삭제)버튼 styled-component
 const CircleButton = styled.button`
   background: #38d9a9;
   &:hover {
@@ -46,6 +48,7 @@ const CircleButton = styled.button`
     `}
 `;
 
+// 입력폼 크기 및 범위를 정하는 styled-component
 const InsertFormPositioner = styled.div`
   width: 100%;
   bottom: 0;
@@ -53,18 +56,17 @@ const InsertFormPositioner = styled.div`
   position: absolute;
 `;
 
+// 토글 버튼으로 생성된 입력폼의 위치를 디자인하는 styled-component
 const InsertForm = styled.form`
   background: #f8f9fa;
-  padding-left: 32px;
-  padding-top: 32px;
-  padding-right: 32px;
-  padding-bottom: 72px;
+  padding: 32px 32px 72px 32px;
 
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   border-top: 1px solid #e9ecef;
 `;
 
+// 입력(input)되는 내용 styled 컴포넌트
 const Input = styled.input`
   padding: 12px;
   border-radius: 4px;
@@ -75,14 +77,18 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
+// 새로운 할 일을 추가하는 컴포넌트
 function TodoCreate() {
+
+  // 토글상태 Hook
   const [open, setOpen] = useState(false);
 
+  // 토글버튼 상태변경 함수
   const onToggle = () => setOpen(!open);
 
   return (
     <>
-      {open && (
+      {(open) && (
         <InsertFormPositioner>
           <InsertForm>
             <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" />
