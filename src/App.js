@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect }from "react";
 import { createGlobalStyle } from 'styled-components';
 import TodoTemplate from './components/TodoTemplate'; // 1.
 import TodoHead from './components/TodoHead'; // 2.
@@ -15,8 +15,17 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App() {
+  useEffect(() => {
+    fetch('http://localhost:3001/items')
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+  },[]);
 
   // 함수 undoneTasks => <TodoHead>
+  const undoneTasks = () => {
+
+  };
 
   // 함수 todos => <TodoList/> -> <TodoItem/>
   // 함수 onRemove => <TodoList/> -> <TodoItem/>
