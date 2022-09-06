@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
 
-  console.log('1')
+  // console.log('1')
 
   useEffect(() => {
     fetch('http://localhost:3001/items')
@@ -30,7 +30,7 @@ function App() {
   const [list, setList] = useState([]);
   const [todo, setTodo] = useState('');
   // console.log(list)
-  console.log('3')
+  // console.log('3')
 
   // 함수 undoneTasks => <TodoHead>
   const undoneTasks = () => {
@@ -45,12 +45,11 @@ function App() {
 
   return (
     <>
-    {console.log('4')}
       <GlobalStyle/>
-      <TodoTemplate todo={todo}>
+      <TodoTemplate>
         <TodoHead /> 
         <TodoItemList todo={todo} list={list}/>
-        <TodoCreate onCreate={handleCreate} />
+        <TodoCreate onCreate={handleCreate} list={list}/>
       </TodoTemplate>
     </>
   );

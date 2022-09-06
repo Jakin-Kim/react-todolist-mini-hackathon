@@ -13,7 +13,7 @@ const TodoListBlock = styled.div`
 
 // 여러개의 할 일 리스트를 보여줄 TodoList 컴포넌트
 function TodoItemList({ todo, list }) {
-  console.log(list);
+  // console.log(list);
   const [done, setDone] = useState(false);
 
   return (
