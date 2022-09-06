@@ -10,6 +10,20 @@ import styled, { css } from 'styled-components';
 // react-icons 중에서 체크(MdDone)와 휴지통(MdDelete) 아이콘 사용하기
 import { MdDone, MdDelete } from 'react-icons/md'; 
 
+// 삭제하기 styled-component (휴지통 아이콘 - MdDelete)
+const Remove = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dee2e6;
+  font-size: 24px;
+  cursor: pointer; // 마우스 커서가 올라갔을 때(호버 시) 보여줄 모양
+  &:hover {
+    color: #ff6b6b;
+  }
+  display: none;
+`;
+
 // 할 일 styled-component
 const TodoItemBlock = styled.div`
   display: flex;
@@ -56,30 +70,19 @@ const Text = styled.div`
     `}
 `;
 
-// 삭제하기 styled-component (휴지통 아이콘 - MdDelete)
-const Remove = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #dee2e6;
-  font-size: 24px;
-  cursor: pointer; // 마우스 커서가 올라갔을 때(호버 시) 보여줄 모양
-  &:hover {
-    color: #ff6b6b;
-  }
-  display: none;
-`;
+
 
 // 전달한 props(id, done, text)들은 추후 데이터를 다룰 때 사용한다.
-function TodoItem({ text }) {
-  const [done, setDone] = useState(false);
+function TodoItem({ text, item, done, setDone }) {
 
+  // 할 일 수행여부 체크버튼
   const handleCheck = () => {
     (!done) ? setDone(!done) : setDone(!done);
   }
 
-  const handleRemove = () => {
-    
+  // 할 일 삭제버튼
+  const handleDelete = () => {
+    console.log(item);
   }
 
   return (
@@ -94,7 +97,9 @@ function TodoItem({ text }) {
         {text} 
       </Text>
       <Remove>
-        <MdDelete />
+        <MdDelete 
+        onClick={handleDelete}
+        />
       </Remove>
     </TodoItemBlock>
   );

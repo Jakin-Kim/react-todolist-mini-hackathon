@@ -1,4 +1,5 @@
 import React, { useState, useEffect }from "react";
+import uuid from 'react-uuid';
 import { createGlobalStyle } from 'styled-components';
 import TodoTemplate from './components/TodoTemplate'; // 1.
 import TodoHead from './components/TodoHead'; // 2.
@@ -16,40 +17,46 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
 
-  // console.log('1')
+  const URL = 'http://localhost:3001';
 
   useEffect(() => {
-    fetch('http://localhost:3001/items')
+    fetch(`${URL}/items`)
     .then(res => res.json())
-    // .then(data => console.log(data))
     .then(data => setList(data))
-    // .then(data => console.log('2'))
     .catch(err => console.log(err))
   },[]);
 
   const [list, setList] = useState([]);
+  const [id, setId] = useState(uuid());
   const [todo, setTodo] = useState('');
-  // console.log(list)
-  // console.log('3')
+  const [done, setDone] = useState(false);
+
+  // console.log(uuid());
 
   // 함수 undoneTasks => <TodoHead>
-  const undoneTasks = () => {
+  // const undoneTasks = () => {
 
-  };
+  // };
 
-  const handleCreate = (e) => {
-    if(e.key === 'Enter') {
-      setTodo(todo)
-    }
-  }
+  
+
 
   return (
     <>
       <GlobalStyle/>
       <TodoTemplate>
         <TodoHead /> 
-        <TodoItemList todo={todo} list={list}/>
-        <TodoCreate onCreate={handleCreate} list={list}/>
+        <TodoItemList 
+          todo={todo} 
+          list={list} 
+          done={done} 
+          setDone={setDone}/>
+        <TodoCreate 
+          id={id}
+          todo={todo}
+          setTodo={setTodo}
+          done={done} 
+          list={list} />
       </TodoTemplate>
     </>
   );

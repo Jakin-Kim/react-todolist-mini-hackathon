@@ -80,20 +80,41 @@ const Input = styled.input`
 `;
 
 // 새로운 할 일을 추가하는 컴포넌트
-function TodoCreate({ onCreate }) {
+function TodoCreate({ id, list, done, todo, setTodo }) {
 
-  // 토글상태 Hook
   const [open, setOpen] = useState(false);
-
-  // 토글버튼 상태변경 함수
+  
   const onToggle = () => setOpen(!open);
+  // const handleChange = (e) => {
+  //   e.preventDefault();
+  //   setTodo(e.target.value);
+  // }
+  const newTodo = {
+    id,
+    "text": todo,
+    done,
+  }
+  // console.log(newTodo)
+  const handleCreate = (e) => {
+    if(e.key === 'Enter' || e.keyCode === 13) {
+      fetch(`${URL}/items`, {
+        method: "POST",
+        headers: { "Content-Type" : "application/json" },
+        body: JSON.parse(newTodo)
+      })
+      .then(res => res.json())
+      .then(data => console.log(newTodo))
+      .catch(err => console.log('error!'))
+    }
+  }
 
   return (
     <>
       {(open) && (
         <InsertFormPositioner>
-          <InsertForm>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onKeyPress={onCreate}/>
+          <InsertForm id="form">
+            <Input autoFocus type="text" name="items" placeholder="할 일을 입력 후, Enter 를 누르세요" 
+              onChange={handleCreate}/>
           </InsertForm>
         </InsertFormPositioner>
       )}
