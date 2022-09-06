@@ -25,13 +25,27 @@ const TodoHeadBlock = styled.div`
 
 // 오늘의 날짜, 요일, 남은 할 일의 갯수를 보여주는 TodoHead 컴포넌트
 function TodoHead() {
-    return (
-      <TodoHeadBlock>
-        <h1>2022년 8월 21일</h1>
-        <div className="day">일요일</div>
-        <div className="tasks-left">할 일 2개 남음</div>
-      </TodoHeadBlock>
-    );
+
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const date = now.getDate();
+  const today = () => {
+    if(now.getDay() === 0) return '일요일'
+    if(now.getDay() === 1) return '월요일'
+    if(now.getDay() === 2) return '화요일'
+    if(now.getDay() === 3) return '수요일'
+    if(now.getDay() === 4) return '목요일'
+    if(now.getDay() === 5) return '금요일'
+    if(now.getDay() === 6) return '토요일'
   }
   
-  export default TodoHead;
+  return (
+    <TodoHeadBlock>
+      <h1>{year}년 {month}월 {date}일</h1>
+      <div className="day">{today()}</div>
+      <div className="tasks-left">할 일 2개 남음</div>
+    </TodoHeadBlock>
+  );
+}
+export default TodoHead;

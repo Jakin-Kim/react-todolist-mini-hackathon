@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 
+
+
 // 원형 토글(클릭 시, input값 생성 및 삭제)버튼 styled-component
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -78,7 +80,7 @@ const Input = styled.input`
 `;
 
 // 새로운 할 일을 추가하는 컴포넌트
-function TodoCreate() {
+function TodoCreate({ onCreate }) {
 
   // 토글상태 Hook
   const [open, setOpen] = useState(false);
@@ -91,7 +93,7 @@ function TodoCreate() {
       {(open) && (
         <InsertFormPositioner>
           <InsertForm>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" />
+            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onKeyPress={onCreate}/>
           </InsertForm>
         </InsertFormPositioner>
       )}

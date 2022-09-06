@@ -29,6 +29,11 @@
       "id": 6,
       "text": "개인 과제 마무리하기",
       "done": false
+    },
+    {
+      "id": 7,
+      "text": "JSON 데이터 테스트",
+      "done": true
     }
   ]
 }

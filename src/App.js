@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3001/items')
     .then(res => res.json())
-    .then(data => console.log(data))
+    // .then(data => console.log(data))
     .catch(err => console.log(err))
   },[]);
 
@@ -27,11 +27,11 @@ function App() {
 
   };
 
-  // 함수 todos => <TodoList/> -> <TodoItem/>
-  // 함수 onRemove => <TodoList/> -> <TodoItem/>
-  // 함수 onToggle => <TodoList/> -> <TodoItem/>
-
-  // 함수 onCreate => <TodoCreate/>
+  const onCreate = (e) => {
+    if(e.keyCode === 13) {
+      // console.log('onCreate 함수 작동!')
+    }
+  }
 
   return (
     <>
@@ -39,7 +39,7 @@ function App() {
       <TodoTemplate>
         <TodoHead /> 
         <TodoItemList />
-        <TodoCreate />
+        <TodoCreate onCreate={onCreate} />
       </TodoTemplate>
     </>
   );

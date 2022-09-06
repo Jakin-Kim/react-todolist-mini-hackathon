@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
@@ -14,14 +13,17 @@ const TodoListBlock = styled.div`
 
 // 여러개의 할 일 리스트를 보여줄 TodoList 컴포넌트
 function TodoItemList() {
-    return (
+  
+  const [done, setDone] = useState(false);
+
+  return (
     <TodoListBlock>
-      <TodoItem text="오늘 프로젝트 만들기" done={true} />
-      <TodoItem text="컴포넌트 스타일링 공부하기" done={true} />
-      <TodoItem text="온라인 세션 준비하기" done={false} />
-      <TodoItem text="공부한 내용 커밋하기" done={false} />
+      <TodoItem text="오늘 프로젝트 만들기" done={done} />
+      <TodoItem text="컴포넌트 스타일링 공부하기" done={done} />
+      <TodoItem text="온라인 세션 준비하기" done={done} />
+      <TodoItem text="공부한 내용 커밋하기" done={done} />
     </TodoListBlock>
-    );
-  }
+  );
+}
   
   export default TodoItemList 
