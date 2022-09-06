@@ -1,4 +1,4 @@
-import React, { useEffect }from "react";
+import React, { useState, useEffect }from "react";
 import { createGlobalStyle } from 'styled-components';
 import TodoTemplate from './components/TodoTemplate'; // 1.
 import TodoHead from './components/TodoHead'; // 2.
@@ -15,31 +15,42 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App() {
+
+  console.log('1')
+
   useEffect(() => {
     fetch('http://localhost:3001/items')
     .then(res => res.json())
     // .then(data => console.log(data))
+    .then(data => setList(data))
+    // .then(data => console.log('2'))
     .catch(err => console.log(err))
   },[]);
+
+  const [list, setList] = useState([]);
+  const [todo, setTodo] = useState('');
+  // console.log(list)
+  console.log('3')
 
   // 함수 undoneTasks => <TodoHead>
   const undoneTasks = () => {
 
   };
 
-  const onCreate = (e) => {
-    if(e.keyCode === 13) {
-      // console.log('onCreate 함수 작동!')
+  const handleCreate = (e) => {
+    if(e.key === 'Enter') {
+      setTodo(todo)
     }
   }
 
   return (
     <>
+    {console.log('4')}
       <GlobalStyle/>
-      <TodoTemplate>
+      <TodoTemplate todo={todo}>
         <TodoHead /> 
-        <TodoItemList />
-        <TodoCreate onCreate={onCreate} />
+        <TodoItemList todo={todo} list={list}/>
+        <TodoCreate onCreate={handleCreate} />
       </TodoTemplate>
     </>
   );

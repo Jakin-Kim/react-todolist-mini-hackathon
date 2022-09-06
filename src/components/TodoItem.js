@@ -71,7 +71,7 @@ const Text = styled.div`
 `;
 
 // 전달한 props(id, done, text)들은 추후 데이터를 다룰 때 사용한다.
-function TodoItem({ id, done, text }) {
+function TodoItem({ done, text }) {
     return (
       <TodoItemBlock>
         <CheckCircle done={done}> {done && <MdDone />} </CheckCircle>
