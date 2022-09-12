@@ -1,10 +1,11 @@
 import React, { useState, useEffect }from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import uuid from 'react-uuid';
 import { createGlobalStyle } from 'styled-components';
 import TodoTemplate from './components/TodoTemplate'; // 1.
 import TodoHead from './components/TodoHead'; // 2.
 import TodoItemList from "./components/TodoItemList"; // 3.
-import TodoItem from "./components/TodoItem"; // 3-1.
+// import TodoItem from "./components/TodoItem"; // 3-1.
 import TodoCreate from './components/TodoCreate'; // 4.
 import URL from './components/URL';
 

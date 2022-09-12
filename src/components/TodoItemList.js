@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
 // 여러개의 할 일 리스트를 보여줄 TodoList 컴포넌트
-function TodoItemList({ id, setId, todo, list, done, setDone }) {
+function TodoItemList({ todo, list, done, setDone }) {
   // console.log(list[0]);
   return (
     <TodoListBlock>
@@ -11,8 +11,7 @@ function TodoItemList({ id, setId, todo, list, done, setDone }) {
         return <TodoItem 
             text={item.text} 
             key={item.id}
-            todo={todo}
-            item={item} 
+            todo={todo} 
             done={done}
             setDone={setDone}/>
       })}

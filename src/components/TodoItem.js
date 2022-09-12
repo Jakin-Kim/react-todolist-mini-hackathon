@@ -11,7 +11,7 @@ import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md'; 
 
 // 전달한 props(id, done, text)들은 추후 데이터를 다룰 때 사용한다.
-function TodoItem({ id, setId, text, todo, done, setDone }) {
+function TodoItem({ text, todo, done, setDone }) {
 
   // 할 일 수행여부 체크버튼
   const handleCheck = () => {

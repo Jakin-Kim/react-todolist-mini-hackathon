@@ -1,12 +1,13 @@
 // 새로운 할 일을 등록할 수 있게 해주는 컴포넌트
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 import URL from './URL'
 
 // 새로운 할 일을 추가하는 컴포넌트
 function TodoCreate({ id, list, setList, done, todo, setTodo }) {
-
+  // const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   
   const onToggle = () => setOpen(!open);
@@ -17,7 +18,7 @@ function TodoCreate({ id, list, setList, done, todo, setTodo }) {
 
   const newTodo = {
     "id": id,
-    "todo": todo,
+    "text": todo,
     "done": done,
   };
 
@@ -34,7 +35,10 @@ function TodoCreate({ id, list, setList, done, todo, setTodo }) {
       body: JSON.stringify(newTodo)
     })
     .then(res => res.json())
-    .then(data => setList(data))
+    .then(data => {
+      setList(data)
+      // navigate('/');
+    })
     .catch(err => err);
   };
 

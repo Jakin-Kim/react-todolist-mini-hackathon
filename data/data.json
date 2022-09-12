@@ -2,7 +2,27 @@
   "items": [
     {
       "id": "7e8f283-1ad2-3c1-3b7c-3f701aa7fe1",
-      "todo": "이 에러 뭘까?",
+      "text": "이 에러 뭘까?",
+      "done": false
+    },
+    {
+      "id": "82f212-6516-4c3-e477-e6436436744",
+      "text": "드디어 된건가?",
+      "done": false
+    },
+    {
+      "id": "d73d65d-08f-c141-ab3-81f520afab1",
+      "text": "와 진짜 힘드네 이거",
+      "done": false
+    },
+    {
+      "id": "282e1dc-6d5e-22ad-0d51-bfd2e1fb837",
+      "text": "추가되나요?",
+      "done": false
+    },
+    {
+      "id": "453d74d-3085-8f0c-7b4-c5b4b082ea6",
+      "text": "전혀 안되나요?",
       "done": false
     }
   ]
