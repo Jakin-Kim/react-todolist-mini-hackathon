@@ -2,6 +2,15 @@
 import React from "react";
 import styled from "styled-components";
 
+// 전체 TodoTemplate이 될 컴포넌트
+  // 컴포넌트 태그 사이에 넣은 값을 조회하고자 할 때 사용하는 특수한 'props.children'을 비구조화 할당으로 표현
+const TodoTemplate = ({ children }) => {
+    // console.log(children)
+    return (
+        <TodoTemplateBlock>{ children }</TodoTemplateBlock>
+    );
+}
+
 // 전체 Todo 프레임 틀을 디자인하는 styled-component
 const TodoTemplateBlock = styled.div`
     width: 512px;
@@ -20,14 +29,5 @@ const TodoTemplateBlock = styled.div`
     display: flex;
     flex-direction: column;
 `;
-
-// 전체 TodoTemplate이 될 컴포넌트
-  // 컴포넌트 태그 사이에 넣은 값을 조회하고자 할 때 사용하는 특수한 'props.children'을 비구조화 할당으로 표현
-const TodoTemplate = ({ children }) => {
-    // console.log(children)
-    return (
-        <TodoTemplateBlock>{ children }</TodoTemplateBlock>
-    );
-}
 
 export default TodoTemplate;

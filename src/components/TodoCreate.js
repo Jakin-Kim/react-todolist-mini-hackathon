@@ -1,9 +1,60 @@
 // 새로운 할 일을 등록할 수 있게 해주는 컴포넌트
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
+import URL from './URL'
 
+// 새로운 할 일을 추가하는 컴포넌트
+function TodoCreate({ id, list, setList, done, todo, setTodo }) {
 
+  const [open, setOpen] = useState(false);
+  
+  const onToggle = () => setOpen(!open);
+
+  const handleChange = (e) => {
+    setTodo(e.target.value);
+  };
+
+  const newTodo = {
+    "id": id,
+    "todo": todo,
+    "done": done,
+  };
+
+  // console.log(newTodo)
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    fetch(`${URL}/items`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newTodo)
+    })
+    .then(res => res.json())
+    .then(data => setList(data))
+    .catch(err => err);
+  };
+
+  return (
+    <>
+      {(open) && (
+        <InsertFormPositioner>
+          <InsertForm onSubmit={handleSubmit}>
+            <Input autoFocus type="text" id="todo" value={todo} placeholder="할 일을 입력 후, Enter 를 누르세요" 
+              onChange={handleChange}
+              />
+          </InsertForm>
+        </InsertFormPositioner>
+      )}
+      <CircleButton onClick={onToggle} open={open}>
+        <MdAdd />
+      </CircleButton>
+    </>
+  );
+}
 
 // 원형 토글(클릭 시, input값 생성 및 삭제)버튼 styled-component
 const CircleButton = styled.button`
@@ -62,7 +113,6 @@ const InsertFormPositioner = styled.div`
 const InsertForm = styled.form`
   background: #f8f9fa;
   padding: 32px 32px 72px 32px;
-
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   border-top: 1px solid #e9ecef;
@@ -78,51 +128,5 @@ const Input = styled.input`
   font-size: 18px;
   box-sizing: border-box;
 `;
-
-// 새로운 할 일을 추가하는 컴포넌트
-function TodoCreate({ id, list, done, todo, setTodo }) {
-
-  const [open, setOpen] = useState(false);
-  
-  const onToggle = () => setOpen(!open);
-  // const handleChange = (e) => {
-  //   e.preventDefault();
-  //   setTodo(e.target.value);
-  // }
-  const newTodo = {
-    id,
-    "text": todo,
-    done,
-  }
-  // console.log(newTodo)
-  const handleCreate = (e) => {
-    if(e.key === 'Enter' || e.keyCode === 13) {
-      fetch(`${URL}/items`, {
-        method: "POST",
-        headers: { "Content-Type" : "application/json" },
-        body: JSON.parse(newTodo)
-      })
-      .then(res => res.json())
-      .then(data => console.log(newTodo))
-      .catch(err => console.log('error!'))
-    }
-  }
-
-  return (
-    <>
-      {(open) && (
-        <InsertFormPositioner>
-          <InsertForm id="form">
-            <Input autoFocus type="text" name="items" placeholder="할 일을 입력 후, Enter 를 누르세요" 
-              onChange={handleCreate}/>
-          </InsertForm>
-        </InsertFormPositioner>
-      )}
-      <CircleButton onClick={onToggle} open={open}>
-        <MdAdd />
-      </CircleButton>
-    </>
-  );
-}
 
 export default TodoCreate;

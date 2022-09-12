@@ -5,10 +5,42 @@
   2. Components Selector 사용방법: CSS선택자의 body 안에 특정 컴포넌트를 JS삽입식으로 표현하고 디자인할 수 있다.
   3. 가상클래스(:hover) 사용방법
   */
-import React, { useState } from 'react';
+import React, {  } from 'react';
 import styled, { css } from 'styled-components';
 // react-icons 중에서 체크(MdDone)와 휴지통(MdDelete) 아이콘 사용하기
 import { MdDone, MdDelete } from 'react-icons/md'; 
+
+// 전달한 props(id, done, text)들은 추후 데이터를 다룰 때 사용한다.
+function TodoItem({ id, setId, text, todo, done, setDone }) {
+
+  // 할 일 수행여부 체크버튼
+  const handleCheck = () => {
+    (!done) ? setDone(!done) : setDone(!done);
+  }
+
+  // 할 일 삭제버튼
+  const handleDelete = () => {
+    console.log(todo);
+  }
+
+  return (
+    <TodoItemBlock>
+      <CheckCircle done={done}
+          onClick={handleCheck} > 
+        {done && <MdDone />} 
+      </CheckCircle>
+      <Text done={done}> 
+        {text} 
+      </Text>
+      <Remove>
+        <MdDelete 
+        onClick={handleDelete}
+        />
+      </Remove>
+    </TodoItemBlock>
+  );
+}
+
 
 // 삭제하기 styled-component (휴지통 아이콘 - MdDelete)
 const Remove = styled.div`
@@ -69,40 +101,5 @@ const Text = styled.div`
       color: #ced4da;
     `}
 `;
-
-
-
-// 전달한 props(id, done, text)들은 추후 데이터를 다룰 때 사용한다.
-function TodoItem({ text, item, done, setDone }) {
-
-  // 할 일 수행여부 체크버튼
-  const handleCheck = () => {
-    (!done) ? setDone(!done) : setDone(!done);
-  }
-
-  // 할 일 삭제버튼
-  const handleDelete = () => {
-    console.log(item);
-  }
-
-  return (
-    <TodoItemBlock>
-      <CheckCircle 
-          done={done}
-          onClick={handleCheck} > 
-        {done && <MdDone />} 
-      </CheckCircle>
-      <Text 
-          done={done}> 
-        {text} 
-      </Text>
-      <Remove>
-        <MdDelete 
-        onClick={handleDelete}
-        />
-      </Remove>
-    </TodoItemBlock>
-  );
-}
 
 export default TodoItem;

@@ -1,48 +1,8 @@
 {
   "items": [
     {
-      "id": 1,
-      "text": "오늘 프로젝트 만들기",
-      "done": false
-    },
-    {
-      "id": 2,
-      "text": "컴포넌트 스타일링 공부하기",
-      "done": false
-    },
-    {
-      "id": 3,
-      "text": "온라인 세션 준비하기",
-      "done": false
-    },
-    {
-      "id": 4,
-      "text": "공부한 내용 커밋하기",
-      "done": false
-    },
-    {
-      "id": 5,
-      "text": "Postman 사용법 공부하기",
-      "done": false
-    },
-    {
-      "id": 6,
-      "text": "개인 과제 마무리하기",
-      "done": false
-    },
-    {
-      "id": 7,
-      "text": "JSON 데이터 테스트",
-      "done": false
-    },
-    {
-      "id": 8,
-      "text": "추가되는건가요?",
-      "done": false
-    },
-    {
-      "id": 9,
-      "text": "계속 추가되는건가요?",
+      "id": "7e8f283-1ad2-3c1-3b7c-3f701aa7fe1",
+      "todo": "이 에러 뭘까?",
       "done": false
     }
   ]
