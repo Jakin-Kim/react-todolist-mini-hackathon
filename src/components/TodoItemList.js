@@ -3,18 +3,13 @@ import styled from 'styled-components';
 import TodoItem from './TodoItem';
 
 // 여러개의 할 일 리스트를 보여줄 TodoList 컴포넌트
-function TodoItemList({ todo, list, done, setDone }) {
-  // console.log(list[0]);
+function TodoItemList() {
   return (
     <TodoListBlock>
-      {list.map(item => {
-        return <TodoItem 
-            text={item.text} 
-            key={item.id}
-            todo={todo} 
-            done={done}
-            setDone={setDone}/>
-      })}
+      <TodoItem text="프로젝트 생성하기" done={true} />
+      <TodoItem text="컴포넌트 스타일링 하기" done={true} />
+      <TodoItem text="Context 만들기" done={false} />
+      <TodoItem text="기능 구현하기" done={false} />
     </TodoListBlock>
   );
 }

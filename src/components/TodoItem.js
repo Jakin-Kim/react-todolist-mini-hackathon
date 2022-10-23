@@ -11,36 +11,17 @@ import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md'; 
 
 // 전달한 props(id, done, text)들은 추후 데이터를 다룰 때 사용한다.
-function TodoItem({ text, todo, done, setDone }) {
-
-  // 할 일 수행여부 체크버튼
-  const handleCheck = () => {
-    (!done) ? setDone(!done) : setDone(!done);
-  }
-
-  // 할 일 삭제버튼
-  const handleDelete = () => {
-    console.log(todo);
-  }
-
+function TodoItem({ id, done, text }) {
   return (
     <TodoItemBlock>
-      <CheckCircle done={done}
-          onClick={handleCheck} > 
-        {done && <MdDone />} 
-      </CheckCircle>
-      <Text done={done}> 
-        {text} 
-      </Text>
+      <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
+      <Text done={done}>{text}</Text>
       <Remove>
-        <MdDelete 
-        onClick={handleDelete}
-        />
+        <MdDelete />
       </Remove>
     </TodoItemBlock>
   );
 }
-
 
 // 삭제하기 styled-component (휴지통 아이콘 - MdDelete)
 const Remove = styled.div`

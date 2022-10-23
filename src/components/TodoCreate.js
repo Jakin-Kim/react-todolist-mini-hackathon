@@ -6,50 +6,17 @@ import { MdAdd } from 'react-icons/md';
 import URL from './URL'
 
 // 새로운 할 일을 추가하는 컴포넌트
-function TodoCreate({ id, list, setList, done, todo, setTodo }) {
-  // const navigate = useNavigate();
+function TodoCreate() {
   const [open, setOpen] = useState(false);
-  
+
   const onToggle = () => setOpen(!open);
-
-  const handleChange = (e) => {
-    setTodo(e.target.value);
-  };
-
-  const newTodo = {
-    "id": id,
-    "text": todo,
-    "done": done,
-  };
-
-  // console.log(newTodo)
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    fetch(`${URL}/items`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newTodo)
-    })
-    .then(res => res.json())
-    .then(data => {
-      setList(data)
-      // navigate('/');
-    })
-    .catch(err => err);
-  };
 
   return (
     <>
-      {(open) && (
+      {open && (
         <InsertFormPositioner>
-          <InsertForm onSubmit={handleSubmit}>
-            <Input autoFocus type="text" id="todo" value={todo} placeholder="할 일을 입력 후, Enter 를 누르세요" 
-              onChange={handleChange}
-              />
+          <InsertForm>
+            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" />
           </InsertForm>
         </InsertFormPositioner>
       )}
