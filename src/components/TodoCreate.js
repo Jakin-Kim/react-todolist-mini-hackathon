@@ -1,9 +1,7 @@
 // 새로운 할 일을 등록할 수 있게 해주는 컴포넌트
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
-import URL from './URL'
 
 // 새로운 할 일을 추가하는 컴포넌트
 function TodoCreate() {
