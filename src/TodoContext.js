@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from 'react';
+import React, { useReducer, createContext, useContext } from 'react';
 
 const CREATE = 'CREATE';
 const TOGGLE = 'TOGGLE';
@@ -58,3 +58,11 @@ export function TodoProvider({ children }) {
     </TodoStateContext.Provider>
   );
 }
+
+export function useTodoState() {
+  return useContext(TodoStateContext);
+};
+
+export function useTodoDispatch() {
+  return useContext(TodoDispatchContext);
+};
