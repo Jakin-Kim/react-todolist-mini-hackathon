@@ -1,6 +1,8 @@
-## 🌟 프로젝트명: Todo-List(Mini-hackathon)
+## 🌟 프로젝트명
+📒 Todo-List(Mini-hackathon) 📒
 
-## ❗ 프로젝트 목표: 사용자가 개인일정들을 편하게 관리할 수 있도록 도와주는 서비스이다.
+## ❗ 프로젝트 목표
+사용자가 개인일정들을 편하게 관리할 수 있도록 도와주는 서비스이다.
 
 ## ☝ 프로젝트 의의
 1. 할 일에 대한 우선순위를 정하여 기록할 수 있도록 한다.
@@ -19,6 +21,6 @@
 
 ## 🎨 [프로젝트 프로토타입](https://www.figma.com/file/LKyZedxUVKXWBM01k9TG4g/react-todo-list-mini-hackathon)
 
-## 기술스택
+## 🖥️ 기술스택
 | <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> | <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> | <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"> | <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"> |<img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>| <img src="https://img.shields.io/badge/Context API-lightgreen?style=for-the-badge&logo=null&logoColor=black"> |
 |-----|-----|-----|-----|-----|-----|
