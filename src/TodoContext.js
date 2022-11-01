@@ -1,4 +1,8 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, createContext } from 'react';
+
+const CREATE = 'CREATE';
+const TOGGLE = 'TOGGLE';
+const REMOVE = 'REMOVE';
 
 const initialTodos = [
   {
@@ -23,10 +27,6 @@ const initialTodos = [
   },
 ];
 
-const CREATE = 'CREATE';
-const TOGGLE = 'TOGGLE';
-const REMOVE = 'REMOVE';
-
 function todoReducer(state, action) {
   switch(action.type) {
     case CREATE:
@@ -43,7 +43,18 @@ function todoReducer(state, action) {
   }
 }
 
+// 하나의 Context에 state와 dispatch를 넣지 않고 
+// 따로 따로 넣어 불필요한 렌더링을 방지하기
+const TodoStateContext = createContext();
+const TodoDispatchContext = createContext();
+
 export function TodoProvider({ children }) {
-  const [ state, dispatch ] = useReducer(todoReducer, initialTodos);
-  return children;
+  const [state, dispatch] = useReducer(todoReducer, initialTodos);
+  return (
+    <TodoStateContext.Provider value={state}>
+      <TodoDispatchContext.Provider value={dispatch}>
+        {children}
+      </TodoDispatchContext.Provider>
+    </TodoStateContext.Provider>
+  );
 }
