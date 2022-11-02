@@ -9,19 +9,29 @@ import React, {  } from 'react';
 import styled, { css } from 'styled-components';
 // react-icons 중에서 체크(MdDone)와 휴지통(MdDelete) 아이콘 사용하기
 import { MdDone, MdDelete } from 'react-icons/md'; 
+import { useTodoDispatch } from '../TodoContext';
 
 // 전달한 props(id, done, text)들은 추후 데이터를 다룰 때 사용한다.
 function TodoItem({ id, done, text }) {
+
+  const dispatch = useTodoDispatch();
+  const onToggle = () => dispatch({ type: 'TOGGLE', id });
+  const onRemove = () => dispatch({ type: 'REMOVE', id });
+
   return (
     <TodoItemBlock>
-      <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
+      <CheckCircle done={done}  onClick={onToggle}>
+        {done && <MdDone />}
+      </CheckCircle>
       <Text done={done}>{text}</Text>
-      <Remove>
-        <MdDelete />
+      <Remove onClick={onRemove}>
+        <MdDelete/>
       </Remove>
     </TodoItemBlock>
   );
 }
+
+export default React.memo(TodoItem);
 
 // 삭제하기 styled-component (휴지통 아이콘 - MdDelete)
 const Remove = styled.div`
@@ -82,5 +92,3 @@ const Text = styled.div`
       color: #ced4da;
     `}
 `;
-
-export default TodoItem;

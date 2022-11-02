@@ -1,9 +1,5 @@
 import React, { useReducer, createContext, useContext, useRef } from 'react';
 
-const CREATE = 'CREATE';
-const TOGGLE = 'TOGGLE';
-const REMOVE = 'REMOVE';
-
 const initialTodos = [
   {
     id: 1,
@@ -29,13 +25,13 @@ const initialTodos = [
 
 function todoReducer(state, action) {
   switch(action.type) {
-    case CREATE:
+    case 'CREATE':
       return state.concat(action.todo);
-    case TOGGLE:
+    case 'TOGGLE':
       return state.map(todo => 
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
       );
-    case REMOVE:
+    case 'REMOVE':
       return state.filter(todo => todo.id !== action.id);
 
     default:
