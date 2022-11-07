@@ -2,19 +2,44 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
+import { useTodoDispatch, useTodoNextId } from '../TodoContext';
 
 // 새로운 할 일을 추가하는 컴포넌트
 function TodoCreate() {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('');
+
+  const dispatch = useTodoDispatch();
+  const nextId = useTodoNextId();
 
   const onToggle = () => setOpen(!open);
-
+  const onChange = e => setValue(e.target.value);
+  const onSubmit = e => {
+    e.preventDefault();
+    dispatch({
+      type: 'CREATE',
+      todo: {
+        id: nextId.current,
+        text: value,
+        done: false,
+      }
+    });
+    setValue('');
+    setOpen(false);
+    nextId.current++;
+  }
+  
   return (
     <>
       {open && (
         <InsertFormPositioner>
-          <InsertForm>
-            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" />
+          <InsertForm onSubmit={onSubmit}>
+            <Input 
+              autoFocus
+              placeholder="할 일을 입력 후, Enter 를 누르세요"
+              onChange={onChange}
+              value={value}
+            />
           </InsertForm>
         </InsertFormPositioner>
       )}
@@ -24,6 +49,8 @@ function TodoCreate() {
     </>
   );
 }
+
+export default TodoCreate;
 
 // 원형 토글(클릭 시, input값 생성 및 삭제)버튼 styled-component
 const CircleButton = styled.button`
@@ -97,5 +124,3 @@ const Input = styled.input`
   font-size: 18px;
   box-sizing: border-box;
 `;
-
-export default TodoCreate;

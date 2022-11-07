@@ -11,7 +11,7 @@ function TodoHead() {
   // const year = now.getFullYear();
   // const month = now.getMonth() + 1;
   // const date = now.getDate();
-  // const today = () => {
+  // const today = () => { // 내가 직접 만들어본 커스텀스타일
   //   if(now.getDay() === 0) return '일요일'
   //   if(now.getDay() === 1) return '월요일'
   //   if(now.getDay() === 2) return '화요일'
